@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 
 public class Conexao {
 	private static EntityManager em = null; 
-	private Conexao() {	}
+	public Conexao() {	}
 	
 	public static synchronized EntityManager getConn(){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("CONCESSIONARIA-PU");
