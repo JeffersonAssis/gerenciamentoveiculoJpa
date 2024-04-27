@@ -10,4 +10,5 @@ public interface IVeiculoDAO {
 	void update(String placa, Veiculo v);
 	Veiculo findPlaca(String placa);
 	List<Veiculo> findAllLoja(String nome);
+	void venderVeiculo(String placa,Veiculo v);
 }

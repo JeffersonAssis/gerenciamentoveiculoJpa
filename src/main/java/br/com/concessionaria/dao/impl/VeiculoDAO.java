@@ -96,5 +96,25 @@ public class VeiculoDAO implements IVeiculoDAO {
 			return null;
 		}
 	}
-
+	
+	@Override
+	public void venderVeiculo(String placa, Veiculo v) {
+		EntityTransaction transaction= em.getTransaction();
+		try {
+			transaction.begin();
+			Veiculo vo = findPlaca(placa);
+			if (vo != null) {
+				vo.setVendido(v.getVendido());
+				em.merge(vo);
+				transaction.commit();
+			} else {
+				System.out.println("Veiculo com a placa: " + placa + " não encontrado.");
+			}
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+	}
 }

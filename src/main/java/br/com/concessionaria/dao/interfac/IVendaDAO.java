@@ -8,6 +8,6 @@ public interface IVendaDAO {
 	
 	void save(Venda venda);
 	Venda findByString (String param);
-	void deleteString(String param);
-	List<Venda> findAll();
+	void deleteString(Venda v);
+	List<Venda> findAll(String param);
 }

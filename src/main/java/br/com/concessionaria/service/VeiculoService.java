@@ -50,4 +50,12 @@ public class VeiculoService {
 
 		return vDao.findAllLoja(nome);
 	}
+	
+	public static void VendaVeiculo(String placa, Veiculo v) {
+		if (placa.length() == 7) {
+			vDao.venderVeiculo(placa, v);
+		} else {
+			throw new NullPointerException("Veiculo inválido!");
+		}
+	}
 }
