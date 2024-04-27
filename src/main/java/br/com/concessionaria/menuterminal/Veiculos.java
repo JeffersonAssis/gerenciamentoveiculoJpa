@@ -70,22 +70,22 @@ public class Veiculos {
 	}
 
 	public void getAll() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 
 	public void getModeloPlaca() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 
 	public void setVeiculo() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 
 	public void updateVeiculo() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 
 	public void deleteVeiculo() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 }

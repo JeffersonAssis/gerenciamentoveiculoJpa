@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import br.com.concessionaria.conexao.Conexao;
 import br.com.concessionaria.dao.impl.LojaDAO;
+import br.com.concessionaria.model.Endereco;
 import br.com.concessionaria.model.Loja;
 import br.com.concessionaria.service.LojaService;
 
@@ -66,21 +67,49 @@ public class Lojas {
 	}
 	
 	public void listar() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 	
 	public void cadastra() throws SQLException {
 		LojaService lojaService = new LojaService();
 		Loja loja = new Loja();
-		lojaService.save(loja);	
+		Endereco end = new Endereco();
+		
+		System.out.print("NOME DA LOJA: ");
+		loja.setNome(sc.nextLine());
+		
+		System.out.print("RUA: ");
+		end.setLogradouro(sc.nextLine());
+		
+		System.out.print("NUMERO: ");
+		loja.setNumEndereco(sc.nextLine());
+		
+		System.out.print("COMPLEMENTO: ");
+		end.setComplemento(sc.nextLine());
+		
+		System.out.print("BAIRRO: ");
+		end.setBairro(sc.nextLine());
+		
+		System.out.print("CIDADE: ");
+		end.setCiade(sc.nextLine());
+		
+		System.out.print("UF: ");
+		end.setUf(sc.nextLine());
+		
+		System.out.print("CEP: ");
+		end.setCep(sc.nextLine());
+		
+			
+		loja.setEndereco(end);
+		lojaService.save(loja);
 	}
 	
 	public void excluir() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 	
 	public void alterar() throws SQLException {
-		System.err.println("Falta implementar a logica de JEFFESON ");
+		System.err.println("Falta implementar o SERVICE e a logica de JEFFERSON");
 	}
 
 }
