@@ -12,9 +12,9 @@ public class EnderecoService {
 		if(cep.length() == 8) {
 			end = ViaCep.buscarCep(cep);
 			if(!end.getCep().isEmpty()) {
-				end.setCep(cep);
-				endDao.save(end);
-			}else {
+			end.setCep(cep);
+			endDao.save(end);
+		}else {
 				throw new NullPointerException("Não foi possivel salvar o registro!");
 			}
 			
@@ -41,6 +41,7 @@ public class EnderecoService {
 		return buscarCep(cep);	
 		
 	}
+
 	public static void deleteCep(String cep) {
 		
 		if(cep.length()==8) {

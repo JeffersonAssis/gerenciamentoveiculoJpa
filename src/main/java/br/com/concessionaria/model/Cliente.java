@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "clientes")
 @NamedQueries({
-	@NamedQuery(name = "findCpf", query = "select c from Cliente c where c.cpf =:cpf"),
+	@NamedQuery(name = "findByClienteNome", query = "SELECT c FROM Cliente c WHERE c.nome LIKE CONCAT('%', :nome, '%')"),
 	@NamedQuery(name = "findByCpf", query = "select c from Cliente c join c.endereco where c.cpf =:cpf")
 })
 public class Cliente extends Pessoa{

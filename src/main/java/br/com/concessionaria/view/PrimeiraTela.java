@@ -1,21 +1,19 @@
 package br.com.concessionaria.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.concessionaria.conexao.Conexao;
-import jakarta.persistence.EntityManager;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.Toolkit;
-import javax.swing.ImageIcon;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class PrimeiraTela extends JFrame {
 
@@ -26,9 +24,10 @@ public class PrimeiraTela extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EntityManager em = Conexao.getConn();
+		
 		
 		try {
+			var em = Conexao.getConn();
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -87,6 +86,13 @@ public class PrimeiraTela extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnManutencao = new JButton("Cadastro");
+		btnManutencao.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ViewCadastro frameCad = new ViewCadastro();
+				frameCad.setVisible(true);
+			}
+		});
 		btnManutencao.setForeground(Color.BLUE);
 		btnManutencao.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnManutencao.setBounds(239, 92, 185, 68);

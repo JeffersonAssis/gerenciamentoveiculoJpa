@@ -50,4 +50,9 @@ public class FuncionarioSevice {
 		
 		return fDao.findAll();
 	}
+	
+	public static List<Funcionario> buscarTodosFuncionariosLoja(String nome) {
+		
+		return fDao.findAlldaLoja(nome);
+	}
 }

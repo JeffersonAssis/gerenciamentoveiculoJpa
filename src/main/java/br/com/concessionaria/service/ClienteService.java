@@ -1,5 +1,7 @@
 package br.com.concessionaria.service;
 
+import java.util.List;
+
 import br.com.concessionaria.dao.impl.ClienteDAO;
 import br.com.concessionaria.model.Cliente;
 import br.com.concessionaria.model.Endereco;
@@ -41,6 +43,14 @@ public class ClienteService {
 			cDao.deleteCpf(cpf);
 		} else {
 			throw new NullPointerException("CPF informado inválido!");
+		}
+	}
+	
+	public static List<Cliente> buscarListaCliente(String nome) {
+		if (!nome.isEmpty()) {
+			return cDao.findClienteNome(nome);
+		} else {
+			throw new NullPointerException("Cliente não Cadastrado");
 		}
 	}
 }

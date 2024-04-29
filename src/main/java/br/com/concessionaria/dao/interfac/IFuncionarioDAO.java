@@ -11,4 +11,6 @@ public interface IFuncionarioDAO {
 	void update(String matricula, Funcionario f);
 	Funcionario findByMatricula(String matricula);
 	List<Funcionario> findAll();
+	List<Funcionario> findAlldaLoja(String nomeLoja);
 }
+

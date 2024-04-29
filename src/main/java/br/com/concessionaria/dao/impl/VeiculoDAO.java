@@ -83,17 +83,17 @@ public class VeiculoDAO implements IVeiculoDAO {
 		try {
 			return em.createNamedQuery("findByPlaca", Veiculo.class).setParameter("placa", placa).getSingleResult();
 		} catch (Exception e) {
-			return null;
+			throw new NullPointerException("Erro ou buscar dados");
 		}
 	}
 
 	@Override
 	public List<Veiculo> findAllLoja(String nome) {
 		try {
-			return em.createNamedQuery("findByVeiculoNomeLoja", Veiculo.class).setParameter("nome",nome).getResultList();
+			return em.createNamedQuery("findByVeiculoNomeLoja", Veiculo.class).setParameter("nome","%"+nome+"%").getResultList();
 		} catch (Exception e) {
 
-			return null;
+			throw new NullPointerException("Erro ou buscar dados");
 		}
 	}
 	
@@ -117,4 +117,15 @@ public class VeiculoDAO implements IVeiculoDAO {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public List<Veiculo> findModelo(String modelo) {
+		try {
+			return em.createNamedQuery("findByModelo", Veiculo.class).setParameter("modelo", modelo).getResultList();
+		} catch (Exception e) {
+			throw new NullPointerException("Erro ou buscar dados");
+		}
+	}
+	
+	
 }
