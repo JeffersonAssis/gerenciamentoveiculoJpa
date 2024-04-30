@@ -1,5 +1,7 @@
 package br.com.concessionaria.dao.impl;
 
+import java.util.List;
+
 import br.com.concessionaria.conexao.Conexao;
 import br.com.concessionaria.dao.interfac.IClienteDAO;
 import br.com.concessionaria.model.Cliente;
@@ -78,6 +80,17 @@ public class ClienteDAO implements IClienteDAO{
 	public Cliente findCpf(String cpf) {
 		try {
 		return em.createNamedQuery("findByCpf", Cliente.class).setParameter("cpf", cpf).getSingleResult();
+		} catch (Exception e) {
+
+			return null;
+		}
+
+	}
+	
+	@Override
+	public List<Cliente> findClienteNome(String nome) {
+		try {
+		return em.createNamedQuery("findByClienteNome", Cliente.class).setParameter("nome", nome).getResultList();
 		} catch (Exception e) {
 
 			return null;

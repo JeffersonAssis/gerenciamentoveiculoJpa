@@ -95,4 +95,14 @@ public class FuncionarioDAO implements IFuncionarioDAO{
 				return null;
 			}
 	}
+	
+	@Override
+	public List<Funcionario> findAlldaLoja(String nome) {
+		try {
+			return em.createNamedQuery("findByNomeLojaAll", Funcionario.class).setParameter("nome", "%"+nome+"%").getResultList();
+			} catch (Exception e) {
+
+				return null;
+			}
+	}
 }

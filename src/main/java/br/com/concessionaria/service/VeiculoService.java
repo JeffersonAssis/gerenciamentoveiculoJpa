@@ -51,6 +51,11 @@ public class VeiculoService {
 		return vDao.findAllLoja(nome);
 	}
 	
+	public static List<Veiculo> buscarTodosPorModelo(String modelo) {
+
+		return vDao.findModelo(modelo);
+	}
+	
 	public static void VendaVeiculo(String placa, Veiculo v) {
 		if (placa.length() == 7) {
 			vDao.venderVeiculo(placa, v);
