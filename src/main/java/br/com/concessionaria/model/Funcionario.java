@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @NamedQueries({
 	@NamedQuery(name = "findByAll", query = "select f from Funcionario f"),
 	@NamedQuery(name = "findByMatricula", query = "select f from Funcionario f join f.endereco where f.matricula =:matricula"),
-	@NamedQuery(name = "findByNomeLojaAll", query = "select f from Funcionario f join Loja l on f.loja.id = l.id where l.nome =:nome")
+	@NamedQuery(name = "findByNomeLojaAll", query = "select f from Funcionario f join Loja l on f.loja.id = l.id where l.nome Like :nome")
 })
 public class Funcionario extends Pessoa {
 
