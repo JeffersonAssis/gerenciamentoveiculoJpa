@@ -2,8 +2,8 @@ package br.com.concessionaria.util;
 
 public enum VeiculoVendido {
 	
-	Vendido(1),
-	Disponivel(2);
+	Vendido(0),
+	Disponivel(1);
 	
 	private int cod;
 	

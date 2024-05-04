@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.concessionaria.dao.impl.FuncionarioDAO;
 import br.com.concessionaria.model.Endereco;
 import br.com.concessionaria.model.Funcionario;
+import br.com.concessionaria.model.Loja;
 
 public class FuncionarioSevice {
 	
@@ -13,6 +14,8 @@ public class FuncionarioSevice {
 	public static void save(Funcionario c) {
 		if (!c.getCpf().isEmpty() && !c.getMatricula().isEmpty() && !c.getNome().isEmpty() && (c.getCpf().length() == 11)) {
 			Endereco end = EnderecoService.buscarCep(c.getEndereco().getCep());
+			Loja l = LojaService.buscarNome(c.getLoja().getNome());
+			c.setLoja(l);
 			c.setEndereco(end);
 			if (!c.getEndereco().getCep().isEmpty())
 				fDao.save(c);

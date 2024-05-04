@@ -19,8 +19,8 @@ import jakarta.persistence.Table;
 @Table(name = "veiculos")
 @NamedQueries({
 	@NamedQuery(name = "findByPlaca", query = "select v from Veiculo v where v.placa=:placa"),
-	@NamedQuery(name = "findByModelo", query = "select v from Veiculo v WHERE v.modelo LIKE :modelo and v.vendido=2"),
-	@NamedQuery(name = "findByVeiculoNomeLoja", query = "SELECT v FROM Veiculo v JOIN Loja l on v.loja.id = l.id WHERE ( v.vendido = 2 and l.nome LIKE :nome) ")
+	@NamedQuery(name = "findByModelo", query = "select v from Veiculo v WHERE v.modelo LIKE :modelo and v.vendido=1"),
+	@NamedQuery(name = "findByVeiculoNomeLoja", query = "SELECT v FROM Veiculo v JOIN Loja l on v.loja.id = l.id WHERE ( v.vendido = 1 and l.nome LIKE :nome) ")
 })
 public class Veiculo implements Serializable {
 

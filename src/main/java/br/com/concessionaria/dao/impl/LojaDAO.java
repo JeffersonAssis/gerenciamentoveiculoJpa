@@ -79,7 +79,7 @@ public class LojaDAO implements ILojaDAO {
 	@Override
 	public Loja findByNome(String nome) {
 		try {
-			return em.createNamedQuery("findByNomeLoja", Loja.class).setParameter("nome", nome).getSingleResult();
+			return em.createNamedQuery("findByNomeLoja", Loja.class).setParameter("nome", "%"+nome+"%").getSingleResult();
 		} catch (Exception e) {
 			return null;
 		}

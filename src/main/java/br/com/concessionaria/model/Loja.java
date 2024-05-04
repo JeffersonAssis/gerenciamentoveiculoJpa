@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table(name ="lojas")
 @NamedQueries({
 	@NamedQuery(name = "findByAllLoja", query = "select l from Loja l"),
-	@NamedQuery(name = "findByNomeLoja", query = "select l from Loja l join l.endereco where l.nome =:nome")
+	@NamedQuery(name = "findByNomeLoja", query = "select l from Loja l join l.endereco where l.nome like :nome")
 })
 public class Loja implements Serializable {
 

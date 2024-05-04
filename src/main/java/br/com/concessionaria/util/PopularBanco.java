@@ -1,19 +1,10 @@
 package br.com.concessionaria.util;
 
-import java.util.Locale;
-
-import org.hibernate.query.hql.LiteralConsumer;
-
 import com.github.javafaker.Faker;
 
-import br.com.concessionaria.model.Cliente;
 import br.com.concessionaria.model.Endereco;
 import br.com.concessionaria.model.Funcionario;
 import br.com.concessionaria.model.Loja;
-import br.com.concessionaria.model.Veiculo;
-import br.com.concessionaria.service.ClienteService;
-import br.com.concessionaria.service.EnderecoService;
-import br.com.concessionaria.service.FuncionarioSevice;
 
 public class PopularBanco {
 	

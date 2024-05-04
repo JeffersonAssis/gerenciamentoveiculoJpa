@@ -2,16 +2,16 @@ package br.com.concessionaria.util;
 
 public enum TipoVeiculos {
 	
-	CICLOMOTOR(1),
-	MOTONETA(2),
-	MOTOCICLETA(3),
-	TRICICLO(4),
-	QUADRICICLO(5),
-	AUTOMOVEL(6),
-	MICROONIBUS(7),
-	ONIBUS(8),
-	COMINHONETE(9),
-	CAMINHAO(0);
+	CICLOMOTOR(0),
+	MOTONETA(1),
+	MOTOCICLETA(2),
+	TRICICLO(3),
+	QUADRICICLO(4),
+	AUTOMOVEL(5),
+	MICROONIBUS(6),
+	ONIBUS(7),
+	COMINHONETE(8),
+	CAMINHAO(9);
 	
 	
 	private int cod;

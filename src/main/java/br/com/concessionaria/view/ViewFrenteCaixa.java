@@ -45,6 +45,7 @@ import br.com.concessionaria.service.EnderecoService;
 import br.com.concessionaria.service.FuncionarioSevice;
 import br.com.concessionaria.service.LojaService;
 import br.com.concessionaria.service.VeiculoService;
+import javax.swing.JComboBox;
 
 public class ViewFrenteCaixa extends JFrame {
 
@@ -74,6 +75,10 @@ public class ViewFrenteCaixa extends JFrame {
 	private DefaultTableModel modeloFun;
 	private JTable tableFun;
 	private JTextField txtNomeLoja;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTable tableVenda;
+	private DefaultTableModel modeloVenda;
 	/**
 	 * Create the frame.
 	 * @throws ParseException 
@@ -87,6 +92,9 @@ public class ViewFrenteCaixa extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
+		JInternalFrame intFremaVendas = new JInternalFrame("Realizar Vendas");
+		intFremaVendas.setClosable(true);
+		
 		JInternalFrame intFremaCadastroCliente = new JInternalFrame("Cadastra Cliente");
 		intFremaCadastroCliente.setClosable(true);
 		
@@ -94,6 +102,7 @@ public class ViewFrenteCaixa extends JFrame {
 		intFrameBuscarCliente.setClosable(true);
 		
 		JInternalFrame intFrameVeiculo = new JInternalFrame("Buscar Veiculo");
+	
 		
 		JInternalFrame intFrameInformacao = new JInternalFrame("Informações");
 		intFrameInformacao.setClosable(true);
@@ -109,6 +118,12 @@ public class ViewFrenteCaixa extends JFrame {
 		menuBar.add(Venda);
 		
 		JMenuItem realizarVenda = new JMenuItem("Realizar Venda");
+		realizarVenda.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				intFremaVendas.setVisible(true);
+			}
+		});
 		Venda.add(realizarVenda);
 		
 		JMenu menuCliente = new JMenu("Cliente");
@@ -158,6 +173,47 @@ public class ViewFrenteCaixa extends JFrame {
 		});
 		MenuLoja.add(menuInfo);
 		
+		intFremaVendas.setFrameIcon(new ImageIcon("C:\\Users\\Davi\\eclipse-workspace\\gerenciamantoveiculo\\src\\main\\resources\\imagens\\icon.png"));
+		intFremaVendas.setBounds(10, 33, 907, 508);
+		contentPane.add(intFremaVendas);
+		intFremaVendas.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel_3_3 = new JLabel("Realizar Venda");
+		lblNewLabel_3_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3_3.setBounds(10, 11, 113, 14);
+		intFremaVendas.getContentPane().add(lblNewLabel_3_3);
+		
+		JLabel lblNewLabel_3_1_1 = new JLabel("Buscar por CPF:");
+		lblNewLabel_3_1_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3_1_1.setBounds(10, 47, 107, 14);
+		intFremaVendas.getContentPane().add(lblNewLabel_3_1_1);
+		
+		JLabel lblNewLabel_3_2_1 = new JLabel("Buscar por placa:");
+		lblNewLabel_3_2_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3_2_1.setBounds(356, 47, 133, 14);
+		intFremaVendas.getContentPane().add(lblNewLabel_3_2_1);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(116, 45, 230, 20);
+		intFremaVendas.getContentPane().add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(478, 45, 257, 20);
+		intFremaVendas.getContentPane().add(textField_1);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(10, 72, 871, 84);
+		intFremaVendas.getContentPane().add(scrollPane_3);
+		
+		tableVenda = new JTable();
+		String [] colunaVenda = {"Placa","Modelo","CPF","Nome Cliente","Matª", "Nome Funcionario"};
+		modeloVenda = new DefaultTableModel();
+		modeloVenda.setColumnIdentifiers(colunaVenda);
+		tableVenda.setModel(modeloVenda);
+		
+		scrollPane_3.setViewportView(tableVenda);
 		
 		intFrameInformacao.setFrameIcon(new ImageIcon("C:\\Users\\Davi\\eclipse-workspace\\gerenciamantoveiculo\\src\\main\\resources\\imagens\\icon.png"));
 		intFrameInformacao.setBounds(10, 33, 907, 508);
@@ -595,6 +651,7 @@ public class ViewFrenteCaixa extends JFrame {
 		btnLimpar.setBounds(599, 445, 89, 23);
 		intFremaCadastroCliente.getContentPane().add(btnLimpar);
 		intFremaCadastroCliente.setVisible(false);
+		intFremaVendas.setVisible(false);
 		
 		
 		
