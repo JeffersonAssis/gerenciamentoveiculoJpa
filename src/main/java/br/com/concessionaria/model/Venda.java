@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
@@ -17,7 +18,8 @@ import jakarta.persistence.Table;
 @Table(name = "vendas")
 @NamedQueries({
 	@NamedQuery(name = "findByVenda", query = "select v from Venda v join Veiculo a on v.veiculo.id = a.id where a.placa LIKE :placa"),
-	@NamedQuery(name = "findByVendaNomeLoja", query = "SELECT v FROM Venda v join Funcionario f on f.id =v.funcionario.id JOIN Loja l ON v.funcionario.loja.id = l.id WHERE l.nome =:nome")
+	@NamedQuery(name = "findByVendaCpf", query = "select v from Venda v join Cliente a on v.cliente.id = a.id where a.cpf LIKE :cpf"),
+	@NamedQuery(name = "findByVendaNomeLoja", query = "SELECT v FROM Venda v join Funcionario f on f.id =v.funcionario.id JOIN Loja l ON v.funcionario.loja.id = l.id WHERE l.nome Like :nome")
 })
 public class Venda implements Serializable {
 
@@ -27,13 +29,13 @@ public class Venda implements Serializable {
 	private long id;
 	@Column(nullable = false)
 	private float valor;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="id_cliente")
 	private Cliente cliente;
 	@OneToOne
 	@JoinColumn(name="id_veiculo")
 	private Veiculo veiculo;
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="id_funcionario")
 	private Funcionario funcionario;
 	public long getId() {

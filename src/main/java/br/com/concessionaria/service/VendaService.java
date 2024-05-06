@@ -24,6 +24,7 @@ public class VendaService {
 			c.setFuncionario(fun);
 			ve.setVendido(VeiculoVendido.Vendido);			
 			c.setVeiculo(ve);
+			c.setValor(c.getValor());
 			VeiculoService.VendaVeiculo(c.getVeiculo().getPlaca(),ve);
 			
 			if (!c.getVeiculo().getPlaca().isEmpty() && !c.getFuncionario().getMatricula().isEmpty() && !c.getCliente().getCpf().isEmpty())
@@ -58,5 +59,10 @@ public class VendaService {
 	public static List<Venda> buscarTodasVendaLoja(String nome) {
 
 		return vDao.findAll(nome);
+	}
+	
+	public static List<Venda> buscarTodasVendaCpf(String cpf) {
+
+		return vDao.findCpf(cpf);
 	}
 }

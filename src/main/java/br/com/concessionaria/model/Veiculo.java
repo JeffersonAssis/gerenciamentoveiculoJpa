@@ -40,7 +40,7 @@ public class Veiculo implements Serializable {
 	private int vendido;
 	private int tipoVeiculo;
 	@ManyToOne
-	@JoinColumn(name = "id_loja")
+	@JoinColumn(name = "id_loja", nullable = false)
 	private Loja loja;
 
 	public long getId() {

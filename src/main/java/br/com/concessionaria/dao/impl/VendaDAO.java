@@ -56,10 +56,20 @@ public class VendaDAO implements IVendaDAO{
 	@Override
 	public List<Venda> findAll(String nome) {
 		try {
-			return em.createNamedQuery("findByVendaNomeLoja", Venda.class).setParameter("nome", nome).getResultList();
+			return em.createNamedQuery("findByVendaNomeLoja", Venda.class).setParameter("nome", "%"+nome+"%").getResultList();
 		} catch (Exception e) {
 
 			throw new NullPointerException("Não foi encontrada nenhuam venda na loja");
+		}
+	}
+
+	@Override
+	public List<Venda> findCpf(String cpf) {
+		try {
+			return em.createNamedQuery("findByVendaCpf", Venda.class).setParameter("cpf", cpf).getResultList();
+		} catch (Exception e) {
+
+			throw new NullPointerException("Não foi encontrada nenhuma venda com o Cpf :"+ cpf);
 		}
 	}
 
