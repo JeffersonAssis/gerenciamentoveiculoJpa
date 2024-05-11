@@ -65,4 +65,9 @@ public class VendaService {
 
 		return vDao.findCpf(cpf);
 	}
+	
+	public static List<Venda> buscarTodasVendas() {
+
+		return vDao.findByAll();
+	}
 }

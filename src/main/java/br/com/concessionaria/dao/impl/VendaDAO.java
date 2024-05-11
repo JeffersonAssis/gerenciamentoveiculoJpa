@@ -72,5 +72,14 @@ public class VendaDAO implements IVendaDAO{
 			throw new NullPointerException("Não foi encontrada nenhuma venda com o Cpf :"+ cpf);
 		}
 	}
+	@Override
+	public List<Venda> findByAll() {
+		try {
+			return em.createNamedQuery("findByAllVenda", Venda.class).getResultList();
+		} catch (Exception e) {
+
+			throw new NullPointerException("Não foi encontrada nenhuma venda");
+		}
+	}
 
 }

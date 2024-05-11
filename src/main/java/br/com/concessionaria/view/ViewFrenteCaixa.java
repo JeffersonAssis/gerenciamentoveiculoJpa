@@ -2,6 +2,7 @@ package br.com.concessionaria.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -49,6 +51,13 @@ import br.com.concessionaria.service.FuncionarioSevice;
 import br.com.concessionaria.service.LojaService;
 import br.com.concessionaria.service.VeiculoService;
 import br.com.concessionaria.service.VendaService;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.swing.JRViewer;
 
 public class ViewFrenteCaixa extends JFrame {
 
@@ -516,6 +525,33 @@ public class ViewFrenteCaixa extends JFrame {
 		lbVendaId.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbVendaId.setBounds(783, 166, 98, 20);
 		intFremaVendas.getContentPane().add(lbVendaId);
+		
+		JButton btRelatorio = new JButton("Relatório");
+		btRelatorio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					JasperReport relaCompilado = JasperCompileManager.compileReport("src/main/java/br/com/concessionaria/relatorio/Relatorio-VendaCarro.jrxml");
+					
+					JasperPrint relaPr = JasperFillManager.fillReport(relaCompilado, null, new JRBeanCollectionDataSource(VendaService.buscarTodasVendas()));
+					
+					JFrame frame = new JFrame("Relatório de Venda");
+				    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				    
+				    JRViewer painelRelatorio = new JRViewer(relaPr);
+				    frame.add(painelRelatorio);
+				    frame.setSize(800,600);
+				    frame.pack();
+				    frame.setVisible(true);
+					}catch(JRException ex) {
+						    JOptionPane.showMessageDialog(null, "Erro ao gerar ou exibir o relatório: " + ex.getMessage());
+					}
+			}
+		});
+		btRelatorio.setBackground(new Color(0, 255, 0));
+		btRelatorio.setForeground(new Color(0, 255, 0));
+		btRelatorio.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btRelatorio.setBounds(353, 445, 133, 23);
+		intFremaVendas.getContentPane().add(btRelatorio);
 
 		intFrameInformacao.setFrameIcon(new ImageIcon(
 				"C:\\Users\\Davi\\eclipse-workspace\\gerenciamantoveiculo\\src\\main\\resources\\imagens\\icon.png"));

@@ -11,4 +11,5 @@ public interface IVendaDAO {
 	void deleteString(Venda v);
 	List<Venda> findAll(String param);
 	List<Venda> findCpf(String param);
+	List<Venda> findByAll();
 }
